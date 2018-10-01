@@ -1,0 +1,9 @@
+{
+  "default-message": "Hello {name}, you have {unreadCount, number} {unreadCount, plural, one {message} other {messages}}",
+  "enumerations": {
+    "language-enum": {
+      "EN_US": "ENG",
+      "ES_ES": "ESP"
+    }
+  }
+}

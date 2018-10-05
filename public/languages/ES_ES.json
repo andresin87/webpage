@@ -1,1 +1,6 @@
-{}
+{
+  "default-message": "",
+  "enumerations.language-enum.EN_GB": "English",
+  "enumerations.language-enum.ES_ES": "Espanol",
+  "settings.profile": ""
+}

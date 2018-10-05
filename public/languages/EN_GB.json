@@ -1,9 +1,6 @@
 {
   "default-message": "Hello {name}, you have {unreadCount, number} {unreadCount, plural, one {message} other {messages}}",
-  "enumerations": {
-    "language-enum": {
-      "EN_US": "ENG",
-      "ES_ES": "ESP"
-    }
-  }
+  "enumerations.language-enum.EN_GB": "English",
+  "enumerations.language-enum.ES_ES": "Español",
+  "settings.profile": "Software engineer focusing on web technologies, with a diverse background that straddles both industry and research. I’ve worked in domains like fintech, natural language processing, and cloud services. I love learning new languages, dealing with interesting data, and creating things that are useful for others."
 }

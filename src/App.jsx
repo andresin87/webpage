@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { IntlProvider } from 'react-intl';
+import { observer } from 'mobx-react';
+import { Component } from 'react';
 import request from 'superagent';
 import locale2 from 'locale2';
 import iso3166 from 'iso3166-1';
 
-import LanguageEnum from './enumerations/LanguageEnum';
-import defaultLanguage from './constants/defaultLanguage';
-
+import Debugger from './components/Debugger/Debugger';
 import Routes from './Routes';
+import appStore from './storage/store';
+import defaultLanguage from './constants/defaultLanguage';
+import LanguageEnum from './enumerations/LanguageEnum';
 
-import './App.scss';
-
-class App extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     const isoLang = iso3166.from(locale2).to2();
@@ -23,8 +24,6 @@ class App extends Component {
     this.state = {
       language: language,
       translations: null,
-      name: 'Eric',
-      unreadCount: 1000,
     };
   }
   
@@ -45,17 +44,24 @@ class App extends Component {
     const { language } = this.state;
     this.getLanguage(language);
   }
-  
+
   render() {
     const { language, translations } = this.state;
     return (
       <IntlProvider locale={language.locale} messages={translations}>
         <div className="App">
-          <Routes/>
+          <Debugger>
+            <Routes/>
+          </Debugger>
         </div>
       </IntlProvider>
-    );
+    )
   }
 }
 
+const MainObserver = observer(Main);
+
+const App = () => <MainObserver store={appStore} />;
+
 export default App;
+

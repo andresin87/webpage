@@ -35,7 +35,7 @@ class Debugger extends Component {
             <p>keyCode: {this.props.store.key}</p>
           </div>
         </div>
-        {this.props.store.debugger && this.props.children}
+        {this.props.children}
       </React.Fragment>
     );
   }
@@ -44,6 +44,6 @@ class Debugger extends Component {
 
 const DebuggerObserver = observer(Debugger);
 
-const DebuggerOut = () => <DebuggerObserver store={appStore} />;
+const DebuggerOut = (props) => <DebuggerObserver store={appStore}>{props.children}</DebuggerObserver>;
 
 export default DebuggerOut;

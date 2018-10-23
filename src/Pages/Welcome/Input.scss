@@ -1,0 +1,111 @@
+@import '../../styles/variables';
+
+.hi-input-wrapper {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1;
+  .hi-input {
+    font-family: $helvetica-neue-lt-std-thin;
+    font-size: 20px;
+    width: 190px;
+    background: $cod-gray;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    color: $alabaster;
+    &::placeholder {
+      font-family: $helvetica-neue-lt-std-thin;
+    }
+  }
+  .hi-input-info {
+    font-size: 8px;
+    display: block;
+    width: 250px;
+    height: 10px;
+    .hi-input-info-container {
+      position: absolute;
+      width: 190px;
+      height: 10px;
+      margin: 0 30px;
+    }
+    .hi-input-skip {
+      position: relative;
+      display: inline-block;
+      right: 0;
+      top: 0;
+      &.on {
+        right: -167px;
+        animation: welcome-hi-input-skip__move_right 0.5s ease-in-out;
+        opacity: 1;
+      }
+      &.off {
+        right: 20px;
+        animation: welcome-hi-input-skip__move_left 0.5s ease-in-out;
+        opacity: 0;
+      }
+    }
+    .hi-input-enter {
+      position: relative;
+      display: inline-block;
+      right: 0;
+      top: 0;
+      &.on {
+        right: -139px;
+        animation: welcome-hi-input-enter__move_right 0.5s ease-in-out;
+        opacity: 1;
+      }
+      &.off {
+        right: -199px;
+        animation: welcome-hi-input-enter__move_left 0.5s ease-in-out;
+        opacity: 0;
+      }
+    }
+    @keyframes welcome-hi-input-skip__move_right {
+      0% {
+        right: -117px;
+        opacity: -2;
+      }
+      100% {
+        right: -167px;
+        opacity: 1;
+      }
+    }
+    @keyframes welcome-hi-input-skip__move_left {
+      0% {
+        right: -167px;
+        opacity: 1;
+      }
+      100% {
+        right: -117px;
+        opacity: -2;
+      }
+    }
+    @keyframes welcome-hi-input-enter__move_right {
+      0% {
+        right: -199px;
+        opacity: -2;
+      }
+      100% {
+        right: -139px;
+        opacity: 1;
+      }
+    }
+    @keyframes welcome-hi-input-enter__move_left {
+      0% {
+        right: -139px;
+        opacity: 1;
+      }
+      100% {
+        right: -199px;
+        opacity: -2;
+      }
+    }
+  }
+  hr {
+    margin: 0;
+    width: 190px;
+  }
+}

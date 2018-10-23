@@ -6,6 +6,8 @@ import request from 'superagent';
 import locale2 from 'locale2';
 import iso3166 from 'iso3166-1';
 
+import './helpers/storeAdapter';
+
 import Debugger from './components/Debugger/Debugger';
 import Routes from './Routes';
 import appStore from './storage/store';

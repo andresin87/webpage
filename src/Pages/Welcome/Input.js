@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import debounce from 'lodash/debounce';
+import StorageTypeEnum from '../../enumerations/StorageTypeEnum';
 
 import './Input.scss';
 
@@ -20,18 +21,33 @@ class Input extends Component {
       if(update) {
         this.forceUpdate();
       }
-      
+    };
+    this.setStore = () => {
+      if (this.value !== '') {
+        window.storage.set(StorageTypeEnum.LOCALSTORAGE.value, 'visitor_name', this.value);
+      }
     };
     this.setDebouncedValue = debounce((value) => {
         this.setValue(value);
       }, 250);
+    this.redirect = () => {
+      this.props.history.push('/home');
+    };
     this.value = '';
   }
   
   keyPressHandler(event) {
     debugger;
     const value = this.input.value;
-    this.setDebouncedValue(value);
+    switch(event.key) {
+      case 'Enter':
+        this.setValue(value);
+        this.setStore();
+        this.redirect();
+        break;
+      default:
+        this.setDebouncedValue(value);
+    }
   }
   render() {
     return (

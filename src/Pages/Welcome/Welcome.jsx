@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { observer } from 'mobx-react/index';
+import StorageTypeEnum from '../../enumerations/StorageTypeEnum';
+
+window.StorageTypeEnum = StorageTypeEnum;
 
 import WelcomeStatus from './WelcomeStatus';
 import Input from './Input';
@@ -16,8 +20,11 @@ class WelcomeCmp extends Component{
     this.renderIntro = this.renderIntro.bind(this);
     this.renderSalute = this.renderSalute.bind(this);
     this.doFocus = this.doFocus.bind(this);
+    console.log(window.storage.get(StorageTypeEnum.LOCALSTORAGE.value, 'visitor_name'));
+    debugger;
+    
     this.state = {
-      mode: !props.store.localStorage.name ? WelcomeStatus.INTRO : WelcomeStatus.SALUTE,
+      mode: !window.storage.get(StorageTypeEnum.LOCALSTORAGE.value, 'visitor_name') ? WelcomeStatus.INTRO : WelcomeStatus.SALUTE,
       introClassName: 'welcome-intro__block in',
     }
   }
@@ -61,7 +68,7 @@ class WelcomeCmp extends Component{
         <div className="hi-title">
           <FormattedMessage id="welcome.hi"/>
         </div>
-        <Input ref={(element) => { this.input = element; }} />
+        <Input ref={(element) => { this.input = element; }} history={this.props.history} />
       </div>
     );
   }
@@ -79,6 +86,6 @@ class WelcomeCmp extends Component{
 
 const WelcomeObserver = observer(WelcomeCmp);
 
-const Welcome = () => <WelcomeObserver store={appStore} />;
+const Welcome = (props) => <WelcomeObserver {...props} store={appStore} />;
 
-export default Welcome;
+export default withRouter(Welcome);

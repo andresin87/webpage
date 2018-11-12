@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import debounce from 'lodash/debounce';
 import StorageTypeEnum from '../../enumerations/StorageTypeEnum';
+import RouteEnum from '../../enumerations/RouteEnum';
 
 import './Input.scss';
 
@@ -23,6 +24,7 @@ class Input extends Component {
       }
     };
     this.setStore = () => {
+      debugger;
       if (this.value !== '') {
         window.storage.set(StorageTypeEnum.LOCALSTORAGE.value, 'visitor_name', this.value);
       }
@@ -31,7 +33,7 @@ class Input extends Component {
         this.setValue(value);
       }, 250);
     this.redirect = () => {
-      this.props.history.push('/home');
+      this.props.history.push(RouteEnum.HOME.path);
     };
     this.value = '';
   }

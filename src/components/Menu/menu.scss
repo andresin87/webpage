@@ -1,0 +1,7 @@
+@import '../../styles/variables';
+svg#menu {
+  > text {
+    fill: $alabaster;
+    font-family: $helvetica-neue-lt-std-light;
+  }
+}

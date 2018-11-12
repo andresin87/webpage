@@ -5,7 +5,6 @@ import settings from "../../settings/index";
 export default class Home extends PureComponent {
   constructor(props) {
     super(props);
-    debugger;
     this.state = {
       name: 'Eric',
       unreadCount: 1000,

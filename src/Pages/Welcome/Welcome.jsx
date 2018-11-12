@@ -3,9 +3,6 @@ import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { observer } from 'mobx-react/index';
 import StorageTypeEnum from '../../enumerations/StorageTypeEnum';
-
-window.StorageTypeEnum = StorageTypeEnum;
-
 import WelcomeStatus from './WelcomeStatus';
 import Input from './Input';
 
@@ -34,13 +31,13 @@ class WelcomeCmp extends Component{
       this.setState({
         introClassName: 'welcome-intro__block out',
       });
-    }, 200); // 2000
+    }, 2000); // 2000
     setTimeout(() => {
       this.setState({
         mode: WelcomeStatus.SALUTE,
       });
       this.doFocus();
-    }, 450); // 4500
+    }, 4500); // 4500
   }
   
   doFocus() {
